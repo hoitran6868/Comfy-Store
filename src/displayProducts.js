@@ -4,12 +4,12 @@ const display = (products, element) => {
   // display products
   element.innerHTML = products
     .map((product) => {
-      // destructure product
       const { id, name, image, price } = product;
       console.log(image);
       return ` <article class="product">
           <div class="product-container">
             <img src="${image}" class="product-img img" alt="${name}" />
+           
             <div class="product-icons">
               <a href="product.html?id=${id}" class="product-icon">
                 <i class="fas fa-search"></i>
@@ -23,9 +23,16 @@ const display = (products, element) => {
             <p class="product-name">${name}</p>
             <h4 class="product-price">${formatPrice(price)}</h4>
           </footer>
-        </article>`;
+        </article> `;
     })
     .join('');
+
+  element.addEventListener('click', function (e) {
+    const parent = e.target.parentElement;
+    if (parent.classList.contains('product-cart-btn')) {
+      addToCart(parent.dataset.id); // get the id of parent element(button)
+    }
+  });
 };
 
 export default display;
