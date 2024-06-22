@@ -7,7 +7,7 @@ const allProductsUrl = 'https://www.course-api.com/javascript-store-products';
 // temporary single product
 // 'https://www.course-api.com/javascript-store-single-product?id=rec43w3ipXvP28vog'
 const singleProductUrl =
-  'https://www.course-api.com/javascript-store-single-product';
+  'https://www.course-api.com/javascript-store-single-product?id=rec43w3ipXvP28vog';
 
 const getElement = (selection) => {
   const element = document.querySelector(selection);
