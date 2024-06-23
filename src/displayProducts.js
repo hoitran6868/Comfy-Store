@@ -5,7 +5,6 @@ const display = (products, element) => {
   element.innerHTML = products
     .map((product) => {
       const { id, name, image, price } = product;
-      console.log(image);
       return ` <article class="product">
           <div class="product-container">
             <img src="${image}" class="product-img img" alt="${name}" />
