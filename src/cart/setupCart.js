@@ -27,10 +27,29 @@ export const addToCart = (id) => {
   } else {
     // update values
   }
-
+  // add one to the item count
+  displayCartItemCount();
+  // display cart totals
+  displayCartTotal();
+  // set cart in local storage
+  setStorageItem('cart', cart);
   // more stuff coming up
   openCart();
 };
+
+function displayCartItemCount() {
+  const amount = cart.reduce((total, cartItem) => {
+    return (total += cartItem.amount);
+  }, 0);
+  cartItemCountDOM.textContent = amount;
+}
+
+function displayCartTotal() {
+  let total = cart.reduce((total, cartItem) => {
+    return (total += cartItem.price * cartItem.amount);
+  }, 0);
+  cartTotalDOM.textContent = `Total : ${formatPrice(total)}`;
+}
 
 const init = () => {
   console.log(cart);
