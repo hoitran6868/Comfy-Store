@@ -36,6 +36,7 @@ window.addEventListener('DOMContentLoaded', async function () {
       const { name, company, price, colors, description } = fields;
       const image = fields.image[0].thumbnails.large.url;
       // set values
+
       document.title = `${name.toUpperCase()} | Comfy`;
       pageTitleDOM.textContent = `Home / ${name}`;
       imgDOM.src = image;
@@ -52,14 +53,13 @@ window.addEventListener('DOMContentLoaded', async function () {
     } else {
       console.log(response.status, response.statusText);
       centerDOM.innerHTML = `
-      <div>
-      <h3 class="error">sorry, something went wrong</h3>
-      <a href="index.html" class="btn">back home</a>
-      </div>
-      `;
+    <div>
+    <h3 class="error">sorry, something went wrong</h3>
+    <a href="index.html" class="btn">back home</a>
+    </div> 
+     `;
     }
   } catch (error) {
-    // handling the network error
     console.log(error);
   }
 

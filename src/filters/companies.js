@@ -2,12 +2,11 @@ import { getElement } from '../utils.js';
 import display from '../displayProducts.js';
 
 const setupCompanies = (store) => {
-  // get the unique value of companies and transfer it into array
   let companies = ['all', ...new Set(store.map((product) => product.company))];
   const companiesDOM = getElement('.companies');
   companiesDOM.innerHTML = companies
     .map((company) => {
-      return `<button class="company-btn">${company}</button>`;
+      return ` <button class="company-btn">${company}</button>`;
     })
     .join('');
   companiesDOM.addEventListener('click', function (e) {
@@ -21,6 +20,7 @@ const setupCompanies = (store) => {
           (product) => product.company === e.target.textContent
         );
       }
+
       display(newStore, getElement('.products-container'), true);
     }
   });

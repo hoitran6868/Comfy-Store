@@ -25,11 +25,13 @@ const display = (products, element, filters) => {
         </article> `;
     })
     .join('');
+
   if (filters) return;
+
   element.addEventListener('click', function (e) {
     const parent = e.target.parentElement;
     if (parent.classList.contains('product-cart-btn')) {
-      addToCart(parent.dataset.id); // get the id of parent element(button)
+      addToCart(parent.dataset.id);
     }
   });
 };

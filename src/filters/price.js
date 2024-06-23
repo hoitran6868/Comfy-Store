@@ -7,7 +7,7 @@ const setupPrice = (store) => {
 
   // setup filter
   let maxPrice = store.map((product) => product.price);
-  maxPrice = Math.max(...maxPrice); // to spread out array values
+  maxPrice = Math.max(...maxPrice);
   maxPrice = Math.ceil(maxPrice / 100);
   priceInput.value = maxPrice;
   priceInput.max = maxPrice;
@@ -15,14 +15,13 @@ const setupPrice = (store) => {
   priceValue.textContent = `Value : $${maxPrice}`;
 
   priceInput.addEventListener('input', function () {
-    // converts value of priceInput from string to number
     const value = parseInt(priceInput.value);
     priceValue.textContent = `Value : $${value}`;
     let newStore = store.filter((product) => product.price / 100 <= value);
     display(newStore, getElement('.products-container'), true);
     if (newStore.length < 1) {
       const products = getElement('.products-container');
-      products.innerHTML = `<h3 class="filter-error">Sorry, No Products Matched Your Search</h3>`;
+      products.innerHTML = `<h3 class="filter-error">sorry, no products matched your search</h3>`;
     }
   });
 };
