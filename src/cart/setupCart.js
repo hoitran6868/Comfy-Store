@@ -89,6 +89,10 @@ function setupCartFunctionality() {
       // parent.parentElement.remove();
       element.parentElement.parentElement.remove();
     }
+    if (parent.classList.contains('cart-item-increase-btn')) {
+      const newAmount = increaseAmount(parentID);
+      parent.nextElementSibling.textContent = newAmount;
+    }
     // increase
     // decrease
 
