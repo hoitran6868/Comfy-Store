@@ -61,6 +61,10 @@ function displayCartItemsDOM() {
   });
 }
 
+function removeItem(id) {
+  cart = cart.filter((cartItem) => cartItem.id !== id);
+}
+
 function increaseAmount(id) {
   let newAmount;
   cart = cart.map((cartItem) => {
@@ -73,7 +77,26 @@ function increaseAmount(id) {
   return newAmount;
 }
 
-function setupCartFunctionality() {}
+function setupCartFunctionality() {
+  cartItemsDOM.addEventListener('click', function (e) {
+    const element = e.target;
+    const parent = e.target.parentElement;
+    const id = e.target.dataset.id;
+    const parentID = e.target.parentElement.dataset.id;
+    // remove
+    if (element.classList.contains('cart-item-remove-btn')) {
+      removeItem(id);
+      // parent.parentElement.remove();
+      element.parentElement.parentElement.remove();
+    }
+    // increase
+    // decrease
+
+    displayCartItemCount();
+    displayCartTotal();
+    setStorageItem('cart', cart);
+  });
+}
 
 const init = () => {
   // display amount of cart items
